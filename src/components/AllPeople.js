@@ -13,9 +13,12 @@ export default class AllPeople extends React.Component {
     };
   }
 
+  URLBASE = 'https://radiant-forest-84246.herokuapp.com'
+  // 'http://localhost:3001'
+
   componentWillMount() {
     // using https for now change back to http
-    ajax.get('https://localhost:3001/people')
+    ajax.get(URLBASE + '/people')
         .withCredentials()
         .end((error, response) => {
             if (!error && response) {
