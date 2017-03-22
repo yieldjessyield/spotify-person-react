@@ -13,10 +13,10 @@ export default class AllPeople extends React.Component {
     };
   }
 
-  var URLBASE = 'https://radiant-forest-84246.herokuapp.com'
-  // 'http://localhost:3001'
 
   componentWillMount() {
+    var URLBASE = 'https://radiant-forest-84246.herokuapp.com'
+    // 'http://localhost:3001'
     // using https for now change back to http
     ajax.get(URLBASE + '/people')
         .withCredentials()
