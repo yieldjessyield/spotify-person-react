@@ -13,7 +13,7 @@ export default class AllPeople extends React.Component {
     };
   }
 
-  URLBASE = 'https://radiant-forest-84246.herokuapp.com'
+  var URLBASE = 'https://radiant-forest-84246.herokuapp.com'
   // 'http://localhost:3001'
 
   componentWillMount() {
