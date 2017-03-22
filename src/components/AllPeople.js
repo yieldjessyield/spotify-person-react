@@ -14,7 +14,8 @@ export default class AllPeople extends React.Component {
   }
 
   componentWillMount() {
-    ajax.get('http://localhost:3001/people')
+    // using https for now change back to http
+    ajax.get('https://localhost:3001/people')
         .withCredentials()
         .end((error, response) => {
             if (!error && response) {
@@ -23,7 +24,7 @@ export default class AllPeople extends React.Component {
               this.setState({ people: response.body.people });
             } else {
               debugger
-                console.log('There was an error fetching from GitHub', error);
+                console.log('There was an error fetching from API', error);
             }
         }
     );
@@ -49,7 +50,7 @@ export default class AllPeople extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="PeopleList">
         <h1>All The People</h1>
         <ul>
           {this.state.people.map(person =>
