@@ -8,12 +8,12 @@ export default class PersonOne extends React.Component {
 
     this.state = {
       personOne: "",
-      deleteButton: "inactive"
+      deleteButton: "disabled"
     };
   }
 
   getUrlBase() {
-    return 'http://localhost:3001/'
+    return 'http://localhost:3001'
     // 'https://radiant-forest-84246.herokuapp.com'
     // 'http://localhost:3001/'
   }
@@ -47,7 +47,8 @@ export default class PersonOne extends React.Component {
             if (!error && response) {
               debugger
               // check this
-              this.setState({ personOne: "", deleteButton: "inactive" });
+              this.setState({ personOne: "", deleteButton: "disabled" });
+              alert("Person with id of 1 deleted")
 
             } else {
               debugger
@@ -60,7 +61,7 @@ export default class PersonOne extends React.Component {
 
 
   render() {
-    if (this.state.deleteButton === "inactive"){
+    if (this.state.deleteButton === "disabled"){
       var deleteButton = <button type="button" disabled>DELETE</button>
       var deletePrompt = ""
     } else if (this.state.deleteButton === "active"){
@@ -76,7 +77,7 @@ export default class PersonOne extends React.Component {
       var person = <p>{this.state.personOne.userName} + {this.state.personOne.userFavoriteCity}</p>
     }
     return (
-      <div className="PeopleList">
+      <div className="PersonOneList">
         <h1>PersonOne</h1>
         {person}
         {findPrompt}
