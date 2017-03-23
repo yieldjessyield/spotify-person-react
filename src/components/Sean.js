@@ -27,7 +27,7 @@ export default class PersonOne extends React.Component {
             if (!error && response) {
               debugger
               this.props.getAllPeople()
-              this.setState({ sean: response.body});
+              this.setState({ sean: response.body, modifyButton: "active"});
             } else {
               debugger
               alert('Could not create Sean');
@@ -46,7 +46,7 @@ export default class PersonOne extends React.Component {
         .end((error, response) => {
             if (!error && response) {
               debugger
-              this.setState({ sean: response.body, modifyButton: "active"});
+              this.setState({ sean: response.body, modifyButton: "disabled"});
             } else {
               debugger
               alert('Could not create Sean');
