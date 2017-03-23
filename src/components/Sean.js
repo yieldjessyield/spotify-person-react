@@ -21,15 +21,14 @@ export default class PersonOne extends React.Component {
   makeSean(){
         var urlBase = this.getUrlBase()
         ajax.post(urlBase + '/people')
-        .send({ name: "Sean", favoriteCity: "New York" })
+        // {"person": {"name": "Shannon", "favoriteCity": "Paris"}}
+        .send({person: { name: "Sean", favoriteCity: "New York" }})
         .withCredentials()
         .end((error, response) => {
             if (!error && response) {
-              debugger
               this.props.getAllPeople()
               this.setState({ sean: response.body, modifyButton: "active"});
             } else {
-              debugger
               alert('Could not create Sean');
             }
         }
@@ -37,19 +36,17 @@ export default class PersonOne extends React.Component {
   }
 
   modifySean(){
-        debugger
         var urlBase = this.getUrlBase()
-        ajax.post(urlBase + '/people')
+        ajax.put(urlBase + '/people')
         // check this.state.sean
-        .send({ id: "1", name: "Sean", favoriteCity: "New York" })
+        .send({person: this.state.sean, update: "Brooklyn"})
         .withCredentials()
         .end((error, response) => {
             if (!error && response) {
-              debugger
+              this.props.getAllPeople()
               this.setState({ sean: response.body, modifyButton: "disabled"});
             } else {
-              debugger
-              alert('Could not create Sean');
+              alert('Could not modify Sean');
             }
         }
     );
@@ -57,7 +54,6 @@ export default class PersonOne extends React.Component {
 
 
   render() {
-    debugger
     if (this.state.modifyButton === "active"){
       var modButton = <button type="button" onClick={this.modifySean.bind(this)}>MODIFY</button>
     } else {
