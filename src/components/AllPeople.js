@@ -1,8 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import ajax from 'superagent';
-// import $ from 'jquery'
-// import axios from 'axios';
 
 export default class AllPeople extends React.Component {
   constructor(props) {
@@ -11,14 +9,20 @@ export default class AllPeople extends React.Component {
     this.state = {
       people: []
     };
+
+    this.getAllPeople = this.getAllPeople.bind(this)
+    this.getUrlBase = this.getUrlBase.bind(this)
   }
 
+  getUrlBase() {
+    return 'http://localhost:3001/'
+    // 'https://radiant-forest-84246.herokuapp.com'
+    // 'http://localhost:3001/'
+  }
 
-  componentWillMount() {
-    var URLBASE = 'https://radiant-forest-84246.herokuapp.com'
-    // 'http://localhost:3001'
-    // using https for now change back to http
-    ajax.get(URLBASE + '/people')
+  getAllPeople(){
+        var urlBase = this.getUrlBase()
+        ajax.get(urlBase + '/people')
         .withCredentials()
         .end((error, response) => {
             if (!error && response) {
@@ -32,24 +36,12 @@ export default class AllPeople extends React.Component {
         }
     );
   }
-  // componentDidMount() {
-  //   request
-  //     .get('http://localhost:3001/people.json')
-  //     .end(function(err, res){
-  //       if (err || !res.ok) {
-  //         debugger
-  //         alert('Oh no! error');
-  //       } else {
-  //         debugger
-  //         alert('yay got ' + JSON.stringify(res.body));
-  //       }
-  //     });
-  //   // fetch('http://localhost:3001/people.json')  
-  //   //   .then(function(response) {
-  //   //     debugger
-  //   //     return response.json()
-  //   //   })
-  // }
+
+  componentWillMount() {
+    debugger
+    this.getAllPeople()
+  }
+
 
   render() {
     return (
@@ -64,10 +56,3 @@ export default class AllPeople extends React.Component {
     );
   }
 }
-
-
-
-// ReactDOM.render(
-//   <AllPeople subreddit="reactjs"/>,
-//   document.getElementById('root')
-// );
