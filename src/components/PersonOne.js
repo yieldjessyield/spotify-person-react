@@ -11,14 +11,8 @@ export default class PersonOne extends React.Component {
     };
   }
 
-  getUrlBase() {
-    return 'http://localhost:3001'
-    // 'https://radiant-forest-84246.herokuapp.com'
-    // 'http://localhost:3001'
-  }
-
   getPersonOne(){
-        var urlBase = this.getUrlBase()
+        var urlBase = this.props.getUrlBase()
         ajax.get(urlBase + '/people/1')
         .withCredentials()
         .end((error, response) => {
@@ -36,7 +30,7 @@ export default class PersonOne extends React.Component {
   }
 
   deletePersonOne(){
-    var urlBase = this.getUrlBase()
+    var urlBase = this.props.getUrlBase()
         ajax.del(urlBase + '/people/1')
         .withCredentials()
         .end((error, response) => {

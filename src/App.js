@@ -25,8 +25,8 @@ class App extends Component {
 
 
   getUrlBase() {
-    return 'http://localhost:3001/'
-    // 'https://radiant-forest-84246.herokuapp.com'
+    // return 'http://localhost:3001/'
+    return 'https://radiant-forest-84246.herokuapp.com'
     // 'http://localhost:3001/'
   }
 
@@ -53,8 +53,8 @@ class App extends Component {
       <div className="App">
           < Header />
           < AllPeople people={this.state.people} getAllPeople={this.getAllPeople}/>
-          < Sean getAllPeople={this.getAllPeople}/>
-          < PersonOne getAllPeople={this.getAllPeople}/>
+          < Sean getAllPeople={this.getAllPeople} getUrlBase={this.getUrlBase}/>
+          < PersonOne getAllPeople={this.getAllPeople} getUrlBase={this.getUrlBase}/>
       </div>
     );
   }

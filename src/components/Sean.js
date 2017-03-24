@@ -12,14 +12,14 @@ export default class PersonOne extends React.Component {
     };
   }
 
-  getUrlBase() {
-    return 'http://localhost:3001'
-    // 'https://radiant-forest-84246.herokuapp.com'
-    // 'http://localhost:3001/'
-  }
+  // getUrlBase() {
+  //   return 'http://localhost:3001'
+  //   // 'https://radiant-forest-84246.herokuapp.com'
+  //   // 'http://localhost:3001/'
+  // }
 
   makeSean(){
-        var urlBase = this.getUrlBase()
+        var urlBase = this.props.getUrlBase()
         ajax.post(urlBase + '/people')
         // {"person": {"name": "Shannon", "favoriteCity": "Paris"}}
         .send({person: { name: "Sean", favoriteCity: "New York" }})
@@ -36,7 +36,7 @@ export default class PersonOne extends React.Component {
   }
 
   modifySean(){
-        var urlBase = this.getUrlBase()
+        var urlBase = this.props.getUrlBase()
         ajax.put(urlBase + '/people')
         // check this.state.sean
         .send({person: this.state.sean, update: "Brooklyn"})
