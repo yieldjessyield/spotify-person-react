@@ -19,15 +19,13 @@ class App extends Component {
   }
 
   componentWillMount() {
-    // debugger
     this.getAllPeople()
   }
 
 
   getUrlBase() {
-    // return 'http://localhost:3001/'
+    // return 'http://localhost:3001'
     return 'https://radiant-forest-84246.herokuapp.com'
-    // 'http://localhost:3001/'
   }
 
   getAllPeople(){
@@ -36,11 +34,9 @@ class App extends Component {
         .withCredentials()
         .end((error, response) => {
             if (!error && response) {
-              // debugger
               // the response.body is a bit of SuperAgent magic
               this.setState({ people: response.body.people });
             } else {
-              // debugger
                 console.log('There was an error fetching from API', error);
             }
         }
@@ -48,7 +44,6 @@ class App extends Component {
   }
 
   render() {
-    // debugger
     return (
       <div className="App">
           < Header />

@@ -17,13 +17,9 @@ export default class PersonOne extends React.Component {
         .withCredentials()
         .end((error, response) => {
             if (!error && response) {
-              if (!response.body.error){
-                this.setState({ personOne: response.body, deleteButton: "active" });
-              }else{
-                alert('There is no person with the id of 1! They might have not been created or you might have already deleted them...');
-              }
+              this.setState({ personOne: response.body, deleteButton: "active" });
             } else {
-              alert('There is no person with the id of 1!');
+              alert('There is no person with the id of 1! They might have not been created or you might have already deleted them...');
             }
         }
     );
@@ -52,13 +48,13 @@ export default class PersonOne extends React.Component {
       var deletePrompt = ""
     } else if (this.state.deleteButton === "active"){
       deleteButton = <button type="button" onClick={this.deletePersonOne.bind(this)}>DELETE</button>
-      deletePrompt = <p>Click delete to delete this person</p>
+      deletePrompt = <p>Click delete to delete this person. You can only delete person 1 once!</p>
     }
     if (this.state.personOne === ""){
       var person = ""
       var findPrompt = <p>Find the person with the id of 1</p>
     } else {
-      person = <p>User #{this.state.personOne.id} {this.state.personOne.name} + {this.state.personOne.favoriteCity}</p>
+      person = <p>Person #{this.state.personOne.id} {this.state.personOne.name} + {this.state.personOne.favoriteCity}</p>
       findPrompt = ""
     }
     return (
