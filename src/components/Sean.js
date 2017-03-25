@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import ajax from 'superagent';
 
 export default class PersonOne extends React.Component {
@@ -15,7 +14,6 @@ export default class PersonOne extends React.Component {
   makeSean(){
         var urlBase = this.props.getUrlBase()
         ajax.post(urlBase + '/people')
-        // {"person": {"name": "Shannon", "favoriteCity": "Paris"}}
         .send({person: { name: "Sean", favoriteCity: "New York" }})
         .withCredentials()
         .end((error, response) => {
@@ -50,7 +48,7 @@ export default class PersonOne extends React.Component {
     if (this.state.modifyButton === "active"){
       var modButton = <button type="button" onClick={this.modifySean.bind(this)}>MODIFY</button>
     } else {
-      var modButton = <button type="button" disabled onClick={this.modifySean.bind(this)}>MODIFY</button>
+      modButton = <button type="button" disabled onClick={this.modifySean.bind(this)}>MODIFY</button>
     }
     return (
       <div className="SeanList">

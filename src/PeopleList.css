@@ -1,4 +1,4 @@
-.App {
+.PeopleList {
   text-align: center;
 }
 
@@ -14,9 +14,6 @@
   color: black;
 }
 
-.App-intro {
-  font-size: large;
-}
 
 ul {
     padding: 0;

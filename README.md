@@ -1,3 +1,69 @@
+# QuickStart
+
++ Click "MAKE"
++ Click "MODIFY"
++ Click "FIND"
++ Click "DELETE"
+
+
+# Notes
+
++ When I say API or server I'm referencing my Ruby on Rails API server hosted at https://radiant-forest-84246.herokuapp.com
+
++ When I say client I'm referencing my React app client hosted on https://spotify-person-project.herokuapp.com/
+
+## Step 1 - GET request to /people 
+
+*No action required*
+
+Once the Home component mounts it makes a GET request to /people on my server. The server responds with the requested data and my client shows all the people that have been created in the All The People section (AllPeople.js component). If no one has been created yet there is a prompt that is displayed letting the user know that they have not created anyone yet.
+
+## Step 2 - POST request to /people
+
+*Action required*
+
+Click on the "MAKE" button in order to trigger a POST request to /people. This request sends Sean's attributes (name : “Sean”, favoriteCity : “New York”) to the server which then creates a new instance of people with Sean's attributes, and then attempts to save that instance to its database. If successful, it renders those attributes back to the client, and if the save is unsuccessful it renders an error message to the client.
+
+## Step 3 - GET request to retrieve the object created in the previous request
+
+*No action required*
+
+After clicking the "MAKE" button and making a call to the server in the previous step, if the make is successful, the client makes the same call in step 1 to /people and renders all created people in the All The People section. The most recent person made will be on the bottom of the list. 
+
+## Step 4 - PUT request to /people and modify the attribute city to be “Brooklyn”
+
+*Action required*
+
+Once the "MAKE" is successful then the "MODIFY" button will become active. Click on "MODIFY" to send a PUT request to /people with your recently created person's data and the update data. The server receives that call, finds the person in the database by their id, changes their favorite city to what was sent as update data, and then attempts to save that person with their changes. If the save was successful the server sends back the updated person's data. The client then runs step 1 again to reflect the modified person in the All The People section.
+
+## Step 5 - GET request to /people/1
+
+*Action required*
+
+We finally move down to the Person One section and click on "FIND" to make the GET request to /people/1. This asks our server to search the database for the person with an id of 1. If that person exists then we return their data back to the client, and if they do not exist we return an error note. 
+
+## Step 6 - DELETE request to /people/1
+
+*Action required*
+
+If a person with the id of 1 is found, then the "DELETE" button becomes active. Click on "DELETE" to send a DELETE request to /people/1. This tells our server to find a person with the id of 1 and to destroy them. **Because of the nature of destroy and database primary key incrementation, you can only delete a person with the id of 1 once. No other person with the id of 1 will ever be created unless the database is reset** If successful we render back a success delete note, 
+
+## Step 7 - GET request to /people 
+
+*No action required*
+
+After sending the DELETE request and receiving a successful delete note from the server, the client runs step 1 once again to reflect the changes in All The People.
+
+
+# Extra
+
+After building out the client to follow the directions as preciecly as possible, I decided to also make a new iteration of the client that is a bit more interactive, allowing the user to create their own person, then update and delete more than just one person. 
+
+This modified version can be accessed at https://spotify-person-project.herokuapp.com/extra
+
+===============================================================================
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>
