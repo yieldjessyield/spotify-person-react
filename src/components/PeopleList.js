@@ -24,8 +24,8 @@ export default class PeopleList extends React.Component {
 
 
   getUrlBase() {
-    return 'http://localhost:3001'
-    // return 'https://radiant-forest-84246.herokuapp.com'
+    // return 'http://localhost:3001'
+    return 'https://radiant-forest-84246.herokuapp.com'
   }
 
   getAllPeople(){
