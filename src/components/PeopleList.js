@@ -51,6 +51,7 @@ export default class PeopleList extends React.Component {
         .withCredentials()
         .end((error, response) => {
             if (!error && response) {
+              this.setState({ nameValue: "Sean", cityValue: "New York" })
               this.getAllPeople()
             } else {
               alert('Could not create Sean');
